@@ -1,0 +1,2 @@
+# FollowAndRemove
+Twitterにおける自動フォローと自動リムーブを可能とするツール
