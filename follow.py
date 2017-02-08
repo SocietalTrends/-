@@ -5,14 +5,14 @@ from time import sleep
 import random
 
 def Init():
-    token = ""
-    token_secret = ""
-    consumer_key = ""
-    consumer_secret = ""
+    token = "3324372194-Vp2CFzyLxXgiTifG5EAvhbUBh0CkUZVYV9KboVY"
+    token_secret = "kCFAIRyla7UtGlX01jyjAXxVilx9DaqFwwYqZ3psF7CPA"
+    consumer_key = "iFhgBRALkDgJFpCJRBijMXhRb"
+    consumer_secret = "KNk5OS6fqA3ZOip8uNeuGNeGQ3sVYBJNREhPbunLWR5JJ2WQjl"
     
     #premise
     user_name = input("Please enter username: \n")
-    maximum = int(input("Please enter the  number of user you want to follow(It can to follow until 1000 users now): \n")) #maximum follow
+    maximum = int(input("Please enter the number of user you want to follow(It can to follow until 1000 users now): \n")) #maximum follow
 
     return Twitter(auth = OAuth(token, token_secret, consumer_key, consumer_secret)), user_name, maximum
 
@@ -39,11 +39,12 @@ def main(t, user, maximum):
             else:
                 try:
                     t.friendships.create(screen_name= follow['screen_name'])
+                    t.statuses.update(status= "@ririka_124 \n"+str(current))
                     current += 1
                     print("{0:3d}: @".format(current)+follow['screen_name']+" Followed!")
                     if current >= maximum:
                         break
-                    sleep(random.randint(2,4))
+                    sleep(random.randint(3,5))
                 except TwitterHTTPError:
                     pass
         if current >= maximum:

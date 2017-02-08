@@ -5,10 +5,10 @@ from time import sleep
 import random
 
 def Init():
-    token = ""
-    token_secret = ""
-    consumer_key = ""
-    consumer_secret = ""
+    token = "3324372194-Vp2CFzyLxXgiTifG5EAvhbUBh0CkUZVYV9KboVY"
+    token_secret = "kCFAIRyla7UtGlX01jyjAXxVilx9DaqFwwYqZ3psF7CPA"
+    consumer_key = "iFhgBRALkDgJFpCJRBijMXhRb"
+    consumer_secret = "KNk5OS6fqA3ZOip8uNeuGNeGQ3sVYBJNREhPbunLWR5JJ2WQjl"
     
     #premise
     user_name = input("Please enter username: \n")
@@ -53,7 +53,7 @@ def destroy(_list, num):
             t.friendships.destroy(screen_name= connect['screen_name'])
             num += 1
             print("{0:03d}: @".format(num) + connect['screen_name'] +" removed!")
-            sleep(random.randint(2,4))
+            sleep(random.randint(3,5))
 
 if __name__ == '__main__':
     t, user, maximum = Init()
