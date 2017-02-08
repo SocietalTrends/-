@@ -3,10 +3,10 @@
 from twitter import *
 from time import sleep
 
-token = "3324372194-Vp2CFzyLxXgiTifG5EAvhbUBh0CkUZVYV9KboVY"
-token_secret = "kCFAIRyla7UtGlX01jyjAXxVilx9DaqFwwYqZ3psF7CPA"
-consumer_key = "iFhgBRALkDgJFpCJRBijMXhRb"
-consumer_secret = "KNk5OS6fqA3ZOip8uNeuGNeGQ3sVYBJNREhPbunLWR5JJ2WQjl"
+token = ""
+token_secret = ""
+consumer_key = ""
+consumer_secret = ""
     
 t = Twitter(auth = OAuth(token, token_secret, consumer_key, consumer_secret))
 
