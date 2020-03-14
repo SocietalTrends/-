@@ -5,16 +5,26 @@ from time import sleep
 import random
 
 def Init():
-    token = "3324372194-Vp2CFzyLxXgiTifG5EAvhbUBh0CkUZVYV9KboVY"
-    token_secret = "kCFAIRyla7UtGlX01jyjAXxVilx9DaqFwwYqZ3psF7CPA"
-    consumer_key = "iFhgBRALkDgJFpCJRBijMXhRb"
-    consumer_secret = "KNk5OS6fqA3ZOip8uNeuGNeGQ3sVYBJNREhPbunLWR5JJ2WQjl"
+    consumer_key = "NqZd7EPwl7hlcaonKbvBSmvfW"
+    consumer_secret = "7MB3iFrGjY4tPIPd96dbbqd3Rako5fOMsIgOy3GU3LmMe2Pb88"
+    token = "1226105854367109120-0n6fqfHjv9H53eKocaxPE7vKOI6XSp"
+    token_secret = "ZaC3MitOO17kDGQaTc6njupivxjwG4gpc92MdXhilOn3q"
     
     #premise
     user_name = input("Please enter username: \n")
     maximum = int(input("Please enter the number of user you want to follow(It can to follow until 1000 users now): \n")) #maximum follow
 
     return Twitter(auth = OAuth(token, token_secret, consumer_key, consumer_secret)), user_name, maximum
+
+def mute(t, user):
+    statusUpdate = t.friends.list(screen_name = user, cursor=-1, count= 200)
+    users = statusUpdate['users']
+    current = 0
+    #print(users)
+    for follow in users:
+        t.mutes.users.create(screen_name=follow['screen_name'])
+        current += 1
+        print("{0:3d}: @".format(current)+follow['screen_name']+" muted!")
 
 def main(t, user, maximum):
     _cursor = -1 #default
@@ -39,7 +49,8 @@ def main(t, user, maximum):
             else:
                 try:
                     t.friendships.create(screen_name= follow['screen_name'])
-                    t.statuses.update(status= "@ririka_124 \n"+str(current))
+                    t.mutes.user.create(screen_name= follow['screen_name'])
+                    #t.statuses.update(status= "@ririka_124 \n"+str(current))
                     current += 1
                     print("{0:3d}: @".format(current)+follow['screen_name']+" Followed!")
                     if current >= maximum:
@@ -55,4 +66,5 @@ def main(t, user, maximum):
     
 if __name__ == '__main__':
     t, user, maximum = Init()
+    #mute(t,user)
     main(t, user, maximum)
